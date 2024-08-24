@@ -23,7 +23,9 @@ int main() {
   vec_insert(vec, vec_begin(vec) + 1, 15);
   printf("After insert: ");
   vec_print(vec);
-
+  vec_emplace(vec, vec_begin(vec) + 1, 300);
+  printf("Emplace: ");
+  vec_print(vec);
   vec_erase(vec, vec_begin(vec) + 2);
   printf("After erase: ");
   vec_print(vec);
