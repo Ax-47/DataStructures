@@ -1,10 +1,10 @@
 # Variables
 CC = gcc
-CFLAGS = -Wall -Wextra -std=c2x -I../../pair
+CFLAGS = -Wall -Wextra -std=c2x -I../../vector
 TARGET_DIR = execute
 TARGET = $(TARGET_DIR)/example
-SRC_DIR = ../../pair
-SRC_FILES = example.c $(SRC_DIR)/pair.c
+SRC_DIR = ../../vector
+SRC_FILES = example.c $(SRC_DIR)/vector.c
 OBJ_FILES = $(SRC_FILES:.c=.o)
 
 # Default target
