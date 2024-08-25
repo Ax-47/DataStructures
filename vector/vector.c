@@ -121,7 +121,8 @@ vectorIterator vec_insert(vector *vec, vectorIterator pos, int value) {
     pos = vec->arr + (pos - old);
   }
   if (pos < vec_end(vec)) {
-    memmove(pos + 1, pos, (vec_end(vec) - pos) * sizeof(int));
+    for (vectorIterator it = vec_end(vec); pos - 1 < it; it--)
+      *(it + 1) = *it;
   }
   *pos = value;
   vec->len++;
@@ -139,19 +140,8 @@ vectorIterator vec_emplace(vector *vec, vectorIterator pos, int value) {
 vectorIterator vec_erase(vector *vec, vectorIterator pos) {
   if (pos < vec_begin(vec) - 1 || pos > vec_end(vec))
     return NULL;
-  int *newArr = malloc(vec->cap * sizeof(int));
-  if (newArr == NULL)
-    return NULL;
-  int i = 0;
-  for (vectorIterator it = vec_begin(vec); it != vec_end(vec); it++) {
-    if (it == pos)
-      continue;
-    newArr[i] = *it;
-    i++;
-  }
-  pos = newArr + (pos - vec_begin(vec));
-  free(vec->arr);
-  vec->arr = newArr;
+  for (vectorIterator it = pos; it != vec_end(vec); it++)
+    *it = *(it + 1);
   vec->len--;
   return pos;
 }
