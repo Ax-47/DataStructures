@@ -72,8 +72,8 @@ LinkedListiterator sll_insertAtTail(singlyLinkedList *ll, int value) {
 }
 void sll_print(const singlyLinkedList *ll) {
   LinkedListiterator it = sll_begin(ll);
-  for (; it != NULL; sll_itNext(&it)) {
+  for (; it != NULL; sll_itNext(&it))
     printf("%d -> ", it->value);
-  }
+
   printf("NULL\n");
 }
