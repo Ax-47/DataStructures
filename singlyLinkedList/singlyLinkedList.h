@@ -26,8 +26,18 @@ void sll_itNext(const LinkedListiterator *it);
 LinkedListiterator sll_advance(LinkedListiterator it, int steps);
 // monify
 LinkedListiterator sll_makeNode(int value);
-LinkedListiterator sll_insertAtHead(singlyLinkedList *ll, int value);
-LinkedListiterator sll_insertAtTail(singlyLinkedList *ll, int value);
+LinkedListiterator sll_insert(singlyLinkedList *ll, LinkedListiterator it,
+                              int value);
+void sll_emplace(LinkedListiterator it, int value);
+LinkedListiterator sll_erase(singlyLinkedList *ll, LinkedListiterator it);
+
+LinkedListiterator sll_pushAtHead(singlyLinkedList *ll, int value);
+LinkedListiterator sll_pushAtTail(singlyLinkedList *ll, int value);
+int sll_popAtTail(singlyLinkedList *ll);
+int sll_popAtHead(singlyLinkedList *ll);
+void sll_clear(singlyLinkedList *ll);
+
 // print
 void sll_print(const singlyLinkedList *ll);
+void sll_free(singlyLinkedList *ll);
 #endif // SINGLY_LINKED_LIST_H
